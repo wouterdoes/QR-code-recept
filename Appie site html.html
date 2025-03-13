@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curry met Linzen en Kikkererwten</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 flex justify-center items-center min-h-screen">
+    <div class="bg-white p-6 rounded-lg shadow-lg text-center max-w-lg">
+        <img src="https://1000logos.net/wp-content/uploads/2024/09/Albert-Heijn-Emblem.png" alt="Albert Heijn Logo" class="w-24 mx-auto mb-4">
+        <h1 class="text-2xl font-bold text-blue-700">Curry met Linzen en Kikkererwten</h1>
+        <img src="https://ohmyfoodness.nl/wp-content/uploads/2019/04/linzen_kikkererwten-madras-feat.jpg" alt="Curry met linzen en kikkererwten" class="w-full h-auto rounded-lg mt-4">
+        <p class="text-gray-600 mt-2">Een heerlijke en voedzame curry met linzen en kikkererwten, perfect voor een gezonde maaltijd.</p>
+        
+        <div class="mt-4">
+            <label for="rating" class="block text-gray-700">Geef een cijfer (1-10):</label>
+            <input type="number" id="rating" min="1" max="10" class="border rounded p-2 w-20 text-center">
+        </div>
+        
+        <div class="mt-4">
+            <label for="feedback" class="block text-gray-700">Toelichting:</label>
+            <textarea id="feedback" rows="3" class="border rounded p-2 w-full" placeholder="Wat vond je ervan?"></textarea>
+        </div>
+        
+        <div class="mt-4">
+            <button onclick="submitFeedback()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Verstuur beoordeling</button>
+        </div>
+        
+        <div class="mt-4">
+            <button onclick="repeatDish()" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Voor herhaling vatbaar!</button>
+        </div>
+        
+        <p id="message" class="text-gray-700 mt-3"></p>
+    </div>
+    
+    <script>
+        function submitFeedback() {
+            const rating = document.getElementById('rating').value;
+            const feedback = document.getElementById('feedback').value;
+            const message = document.getElementById('message');
+            
+            if (rating < 1 || rating > 10 || rating === "") {
+                message.textContent = 'Geef een cijfer tussen 1 en 10.';
+                message.style.color = 'red';
+                return;
+            }
+            
+            message.textContent = `Bedankt voor je beoordeling! Je gaf een ${rating}/10.\nToelichting: ${feedback}`;
+            message.style.color = 'green';
+        }
+        
+        function repeatDish() {
+            document.getElementById('message').textContent = 'Leuk dat je dit gerecht opnieuw wilt maken!';
+            document.getElementById('message').style.color = 'blue';
+        }
+    </script>
+</body>
+</html>
